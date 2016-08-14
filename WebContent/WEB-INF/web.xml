@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+  <welcome-file-list>
+    <welcome-file>lojin.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>登陆检查</description>
+    <servlet-name>LojinServlet</servlet-name>
+    <servlet-class>common.LojinServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>客户信息管理</description>
+    <servlet-name>List_noteServlet</servlet-name>
+    <servlet-class>common.List_noteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>联系人信息管理</description>
+    <servlet-name>Link_noteServlet</servlet-name>
+    <servlet-class>common.Link_noteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>活动信息管理</description>
+    <servlet-name>Activity_noteServlet</servlet-name>
+    <servlet-class>common.Activity_noteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LojinServlet</servlet-name>
+    <url-pattern>/lojinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>List_noteServlet</servlet-name>
+    <url-pattern>/List_noteServlet</url-pattern> 
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Link_noteServlet</servlet-name>
+    <url-pattern>/Link_noteServlet</url-pattern> 
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Activity_noteServlet</servlet-name>
+    <url-pattern>/Activity_noteServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <filter>
+    <description>解决中文问题</description>
+    <filter-name>characterEncoding</filter-name>
+    <filter-class>common.CharacterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <description>登录检验</description>
+    <filter-name>loginCheck</filter-name>
+    <filter-class>common.LoginCheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>loginCheck</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+ <filter>
+    <description>访问统计</description>
+    <filter-name>AccessStatistics</filter-name>
+    <filter-class>common.AccessStatisticsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AccessStatistics</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <listener>
+	<listener-class>common.SessionListener</listener-class>
+  </listener> 
+ </web-app>
+ <!--  
+ <servlet> 
+<servlet-name>ValidatonCode</servlet-name> 
+<servlet-class>common.ValidationCode</servlet-class> 
+</servlet> 
+<servlet-mapping>
+<servlet-name>ValidatonCode</servlet-name> 
+<url-pattern>/*</url-pattern> 
+</servlet-mapping>
+ -->
